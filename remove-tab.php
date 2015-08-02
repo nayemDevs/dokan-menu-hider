@@ -1,23 +1,59 @@
-/* Remove shipping tab from product edit page */
+<?php 
 
-add_filter( 'dokan_product_data_tabs', 'remove_shipping_menu');
+/*
+Plugin Name: Dokan tab remover
+Plugin URI: https://github.com/nayemDevs/Dokan-tab-remover
+Description: 
+Author: Nayem
+Version: 0.1
+Author URI: http://twitter.com/nayemDevs
+License: GPL2
+TextDomain: dokan
+*/
 
 
-    function remove_shipping_menu( $dokan_product_data_tabs){
+//Admin menu in Dokan settings
 
-        unset($dokan_product_data_tabs['shipping']);
+add_filter( 'dokan_settings_fields', 'wlr_tab_remover' );
 
-        return $dokan_product_data_tabs;
-}
 
-/* Remove shippng tab from single product page*/
+	function wlr_tab_remover($settings_fields){
 
-remove_action( 'woocommerce_product_tabs' ,'register_product_tab');
+		 $settings_fields ['dokan_selling'] = array(
+									'remove_tab' => array(
+				                    'name'    => 'remove_tab',
+				                    'label'   => __( 'Hide Dashboard Menu/Tab For Seller', 'dokan' ),
+				                    'desc'    => __( 'Insert the dashbaord menu name to hide from seller', 'dokan' ),
+				                    'type'    => 'text',
+				                    
+				                
+				                ),
+           
+           				 );
 
-function remove_product_shipping_tab($tabs){
+                   return $settings_fields;
 
-    unset($tabs['shipping']);
-    return $tabs;
-}
 
-add_action ( 'woocommerce_product_tabs' , 'remove_product_shipping_tab');
+
+	}
+
+
+// Dashbaord menu removing function 
+
+	add_filter( 'dokan_get_dashboard_nav','wlr_dashbaord_nav');
+
+	function wlr_dashbaord_nav($urls){
+			
+			 $menu = get_option('remove_tab','dokan_selling');
+		     unset($urls[$menu]);
+
+		return $urls;
+
+
+
+	}
+
+
+
+
+ ?>
