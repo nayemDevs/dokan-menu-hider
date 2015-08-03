@@ -44,7 +44,9 @@ add_filter( 'dokan_settings_fields', 'wlr_tab_remover' );
 
 	function wlr_dashbaord_nav($urls){
 			
-			 $menu = get_option('remove_tab','dokan_selling');
+			 
+			 echo $menu = dokan_get_option('remove_tab','dokan_selling');
+		   
 		     unset($urls[$menu]);
 
 		return $urls;
@@ -53,6 +55,18 @@ add_filter( 'dokan_settings_fields', 'wlr_tab_remover' );
 
 	}
 
+	add_filter( 'dokan_get_dashboard_settings_nav','wlr_dashbaord_settings_nav');
+
+	function wlr_dashbaord_settings_nav($settings_sub){
+
+			echo $menu = dokan_get_option('remove_tab','dokan_selling');
+			unset($settings_sub[$menu]);
+			return $settings_sub;
+
+
+
+
+	}
 
 
 
