@@ -24,11 +24,15 @@ add_filter( 'dokan_settings_fields', 'wlr_tab_remover' );
 				                    'name'    => 'remove_tab',
 				                    'label'   => __( 'Hide Dashboard Menu/Tab For Seller', 'dokan' ),
 				                    'desc'    => __( 'Insert the dashbaord menu name to hide from seller', 'dokan' ),
-				                    'type'    => 'text',
-				                    
-				                
+				                    'type'    => 'select',
+				                    'options' => array(
+							                    'products' => 'Products',
+							                    'orders'   => 'Orders',
+							                    'withdraw' => 'Withdraw',
+											    'payment'  => 'Payment',
+											    'coupons'  => 'Coupons'         
 				                ),
-           
+           ),
            				 );
 
                    return $settings_fields;
@@ -40,16 +44,17 @@ add_filter( 'dokan_settings_fields', 'wlr_tab_remover' );
 
 // Dashbaord menu removing function 
 
-	add_filter( 'dokan_get_dashboard_nav','wlr_dashbaord_nav');
+	add_filter( 'dokan_get_dashboard_nav','wlr_dashbaord_nav', 11);
 
 	function wlr_dashbaord_nav($urls){
 			
 			 
-			 echo $menu = dokan_get_option('remove_tab','dokan_selling');
+			  $menu = dokan_get_option('remove_tab','dokan_selling');
 		   
 		     unset($urls[$menu]);
-
+		     	var_dump($menu);
 		return $urls;
+
 
 
 
@@ -59,7 +64,7 @@ add_filter( 'dokan_settings_fields', 'wlr_tab_remover' );
 
 	function wlr_dashbaord_settings_nav($settings_sub){
 
-			echo $menu = dokan_get_option('remove_tab','dokan_selling');
+			 $menu = dokan_get_option('remove_tab','dokan_selling');
 			unset($settings_sub[$menu]);
 			return $settings_sub;
 
