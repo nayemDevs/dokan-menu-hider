@@ -52,8 +52,8 @@ add_filter( 'dokan_settings_fields', 'wlr_tab_remover' );
 			  $menu = dokan_get_option('remove_tab','dokan_selling');
 		   
 		     unset($urls[$menu]);
-		     	var_dump($menu);
-		return $urls;
+		     
+		     return $urls;
 
 
 
