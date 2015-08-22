@@ -1,8 +1,8 @@
 <?php 
 
 /*
-Plugin Name: Dokan option remover
-Plugin URI: https://github.com/nayemDevs/Dokan-tab-remover
+Plugin Name: Dokan Menu Hider 
+Plugin URI: https://github.com/nayemDevs/dokan-menu-hider
 Description: Remove seller dashboard menu easily in Dokan plugin
 Author: Nayem
 Version: 0.1
