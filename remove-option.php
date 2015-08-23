@@ -39,6 +39,23 @@ add_filter( 'dokan_settings_fields', 'wlr_tab_remover' );
 
 				                ),
            ),
+									'disable_tab' => array(
+				                    'name'    => 'disable_tab',
+				                    'label'   => __( 'Remove tab', 'dokan' ),
+				                    'desc'    => __( 'Select the tab to remove from product edit page', 'dokan' ),
+				                    'type'    => 'select',
+				                    'options' => array(
+				                    		     	     ''	        =>'--Select--',	
+							                    'edit'      => 'Edit',
+							                    'options'   =>'Options',
+							                    'inventory' => 'Inventory',
+							                    'shipping'  => 'Shipping',
+							                    'attributes'=>'Attributes',
+							                    'variations'=> 'Variations'
+							                   )
+				                    )
+
+
            				 );
 
                    return $settings_fields;
@@ -85,6 +102,18 @@ add_filter( 'dokan_settings_fields', 'wlr_tab_remover' );
 
 	}
 
+//Remove tab from product edit page
+
+add_filter( 'dokan_product_data_tabs','wlr_remove_tab');
+
+		function wlr_remove_tab($dokan_product_data_tabs){
+
+		          $menu = dokan_get_option('disable_tab','dokan_selling');
+		          unset($dokan_product_data_tabs[$menu]);
+		          return $dokan_product_data_tabs;
+
+
+}
 
 
  ?>
