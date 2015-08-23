@@ -35,7 +35,6 @@ add_filter( 'dokan_settings_fields', 'wlr_tab_remover' );
 											    'reports'  => 'Reports',
 											    'payment'  => 'Payment',
 											    'shipping' => 'Shipping',
-											    'store'    => 'Store Settings',
 											    'social'   => 'Social'
 
 				                ),
