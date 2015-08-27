@@ -1,8 +1,8 @@
 <?php 
 
 /*
-Plugin Name: Dokan tab remover
-Plugin URI: https://github.com/nayemDevs/Dokan-tab-remover
+Plugin Name: Dokan Menu Hider
+Plugin URI: https://github.com/nayemDevs/dokan-menu-hider
 Description: Remove seller dashboard menu/tab easily - Dokan
 Author: Nayem
 Version: 0.1
@@ -26,7 +26,7 @@ function wlr_tab_remover($settings_fields){
 			'desc'    => __( 'Select the dashboard menu to hide from seller', 'dokan' ),
 			'type'    => 'select',
 			'options' => array(
-				''		   =>'--Select--',	
+				   ''      =>'--Select--',	
 				'products' => 'Products',
 				'orders'   => 'Orders',
 				'withdraw' => 'Withdraw',
