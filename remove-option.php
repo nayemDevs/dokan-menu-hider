@@ -1,11 +1,11 @@
 <?php 
 
 /*
-Plugin Name: Dokan Menu Hider
+Plugin Name: Dokan tab remover
 Plugin URI: https://github.com/nayemDevs/dokan-menu-hider
 Description: Remove seller dashboard menu/tab easily - Dokan
 Author: Nayem
-Version: 0.1
+Version: 1.0
 Author URI: http://twitter.com/nayemDevs
 License: GPL2
 TextDomain: dokan
@@ -14,19 +14,18 @@ TextDomain: dokan
 
 //Admin menu in Dokan settings
 
-add_filter( 'dokan_settings_fields', 'wlr_tab_remover' );
+add_filter( 'dokan_settings_fields', 'wlr_tab_remover', 10);
 
 
 function wlr_tab_remover($settings_fields){
 
-	$settings_fields ['dokan_selling'] = array(
-		'remove_tab' => array(
+		$settings_fields ['dokan_selling']['remove_tab'] = array(
 			'name'    => 'remove_tab',
 			'label'   => __( 'Hide Seller Dashboard Menu', 'dokan' ),
 			'desc'    => __( 'Select the dashboard menu to hide from seller', 'dokan' ),
 			'type'    => 'select',
 			'options' => array(
-				   ''      =>'--Select--',	
+				''		   =>'--Select--',	
 				'products' => 'Products',
 				'orders'   => 'Orders',
 				'withdraw' => 'Withdraw',
@@ -38,9 +37,9 @@ function wlr_tab_remover($settings_fields){
 				'social'   => 'Social'
 
 				),
-			),
+			);
 
-		'disable_tab' => array(
+		$settings_fields ['dokan_selling']['disable_tab'] = array(
 			'name'    => 'disable_tab',
 			'label'   => __( 'Remove tab', 'dokan' ),
 			'desc'    => __( 'Select the tab to remove from product edit page', 'dokan' ),
@@ -53,12 +52,11 @@ function wlr_tab_remover($settings_fields){
 				'attributes'=>'Attributes',
 				'variations' => 'Variations'
 				)
-			)
+			);
 
 
-		);
 
-	return $settings_fields;
+		return $settings_fields;
 
 
 
